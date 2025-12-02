@@ -28,7 +28,7 @@ Interfaz optimizada para la asignación rápida. Sistema de alertas semánticas 
 
 ### 3. Gestión de Flota
 Visualización clara del estado de los choferes para maximizar la ocupación de los vehículos.
-![Fleet Management](link-a-tu-imagen-fleet.png)
+![Fleet Management](asses/Status%20-%20copia.png)
 
 ---
 

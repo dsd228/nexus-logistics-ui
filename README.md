@@ -36,8 +36,9 @@ Visualización clara del estado de los choferes para maximizar la ocupación de 
 Adaptación de la experiencia para el operador en movimiento y el seguimiento rápido.
 <p float="left">
   <img src="asses/iPhone%20HOME%2016%20-%201%20-%20copia.png" width="30%" />
-  <img src="link-a-tu-imagen-movil-2.png" width="30%" />
-  <img src="link-a-tu-imagen-movil-3.png" width="30%" />
+  <img src="asses/iPhone%20DISPCH16%20-%203%20-%20copia.png" width="30%" />
+  <img src="asses/iPhone%20SHIPMENTS16%20-%202%20-%20copia.png" width="30%" />
+  <img src="asses/iPhone%20DRIVER16%20-%204%20-%20copia.png" width="30%" />
 </p>
 
 ---

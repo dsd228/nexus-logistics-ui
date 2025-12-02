@@ -35,7 +35,7 @@ Visualización clara del estado de los choferes para maximizar la ocupación de 
 ## 📱 Diseño Móvil (Mobile App)
 Adaptación de la experiencia para el operador en movimiento y el seguimiento rápido.
 <p float="left">
-  <img src="link-a-tu-imagen-movil-1.png" width="30%" />
+  <img src="asses/iPhone%20HOME%2016%20-%201%20-%20copia.png" width="30%" />
   <img src="link-a-tu-imagen-movil-2.png" width="30%" />
   <img src="link-a-tu-imagen-movil-3.png" width="30%" />
 </p>

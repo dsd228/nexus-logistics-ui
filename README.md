@@ -20,7 +20,7 @@ Diseñé "Nexus Logistics", una plataforma SaaS B2B centralizada que permite:
 
 ### 1. Centro de Control Estratégico
 Diseñado para la toma de decisiones basada en datos. KPIs claros y visualización de flota.
-![Dashboard Desktop](link-a-tu-imagen-dashboard.png)
+![Dashboard Desktop](![Home Screen](asses/Home%20-%20copia.png))
 
 ### 2. Despacho y Operaciones (Dispatch)
 Interfaz optimizada para la asignación rápida. Sistema de alertas semánticas (Verde/Rojo) para identificar problemas al instante.

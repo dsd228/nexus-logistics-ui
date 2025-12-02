@@ -24,7 +24,7 @@ Diseñado para la toma de decisiones basada en datos. KPIs claros y visualizaci�
 
 ### 2. Despacho y Operaciones (Dispatch)
 Interfaz optimizada para la asignación rápida. Sistema de alertas semánticas (Verde/Rojo) para identificar problemas al instante.
-![Dispatch Map](link-a-tu-imagen-mapa.png)
+![Dispatch Map](asses/dispatch%20-%20copia.png)
 
 ### 3. Gestión de Flota
 Visualización clara del estado de los choferes para maximizar la ocupación de los vehículos.

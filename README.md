@@ -1,6 +1,6 @@
 # Nexus Logistics - Dashboard de Gestión de Última Milla 🚛
 
-![Hero Image]("[asses/Home - copia.png]
+![Hero Image](["[asses/Home - copia.png]](https://github.com/dsd228/nexus-logistics-ui/blob/f710b1387ea3f881e81c1aa44197eeb03236cad9/asses/Home%20-%20copia.png)
 
 ## 📋 Resumen del Proyecto
 **Rol:** Product Designer (UX/UI) | **Duración:** 2 Semanas | **Herramientas:** Figma, GitHub

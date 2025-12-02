@@ -1,7 +1,9 @@
 # Nexus Logistics - Dashboard de Gestión de Última Milla 🚛
 
 ![Home Screen](asses/cover%20finalcopia.png)
-
+### 🎮 Experiencia Interactiva
+¿Quieres probar el dashboard tú mismo?
+[👉 **Ver Prototipo Interactivo en Figma**](https://www.figma.com/proto/kxmeNODyszHGlBmiOfth0C/Nexus-Logistics?node-id=40-742&t=wyMrHupjheVhxPth-1&scaling=scale-down&content-scaling=fixed&page-id=12%3A16&starting-point-node-id=13%3A116&show-proto-sidebar=1)
 ## 📋 Resumen del Proyecto
 **Rol:** Product Designer (UX/UI) | **Duración:** 2 Semanas | **Herramientas:** Figma, GitHub
 
@@ -51,6 +53,6 @@ Para garantizar consistencia y escalabilidad, creé un sistema basado en la iden
 
 ### 🚀 Conclusiones y Aprendizajes
 Este proyecto se centró en reducir la fricción en tareas repetitivas y mejorar la legibilidad de datos complejos en entornos corporativos.
-
+[![Figma Prototype](https://img.shields.io/badge/Figma-Prototipo_Interactivo-F24E1E?style=for-the-badge&logo=figma&logoColor=white)](https://www.figma.com/proto/kxmeNODyszHGlBmiOfth0C/Nexus-Logistics?node-id=40-742&t=wyMrHupjheVhxPth-1&scaling=scale-down&content-scaling=fixed&page-id=12%3A16&starting-point-node-id=13%3A116&show-proto-sidebar=1)
 ---
 *Diseñado por David Sebastián Díaz.*

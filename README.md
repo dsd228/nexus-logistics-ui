@@ -45,7 +45,7 @@ Adaptación de la experiencia para el operador en movimiento y el seguimiento r�
 
 ## 🎨 Sistema de Diseño "Nexus Blue"
 Para garantizar consistencia y escalabilidad, creé un sistema basado en la identidad corporativa de Nexus, utilizando el azul marino (#1B365D) como base y colores semánticos para alertas operativas.
-![Design System](link-a-tu-imagen-design-system.png)
+![Design System](asses/unnamed%209.png)
 
 ---
 

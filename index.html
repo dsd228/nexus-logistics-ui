@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Nexus Logistics</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+:root{
+  --bg:#0F172A;
+  --panel:#111827;
+  --card:#1F2933;
+  --primary:#3B82F6;
+  --accent:#22D3EE;
+  --text:#E5E7EB;
+  --muted:#9CA3AF;
+  --border:#273244;
+}
+
+*{
+  box-sizing:border-box;
+  font-family: Inter, system-ui, -apple-system, sans-serif;
+}
+
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  display:flex;
+}
+
+/* sidebar */
+.sidebar{
+  width:240px;
+  background:var(--panel);
+  padding:24px;
+  border-right:1px solid var(--border);
+}
+
+.sidebar h1{
+  font-size:20px;
+  margin-bottom:32px;
+}
+
+.nav a{
+  display:block;
+  padding:12px;
+  border-radius:8px;
+  color:var(--muted);
+  text-decoration:none;
+  margin-bottom:8px;
+}
+
+.nav a.active,
+.nav a:hover{
+  background:var(--card);
+  color:var(--text);
+}
+
+/* main */
+.main{
+  flex:1;
+  padding:32px;
+}
+
+/* header */
+.header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:32px;
+}
+
+.header h2{
+  margin:0;
+}
+
+/* cards */
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:16px;
+  margin-bottom:32px;
+}
+
+.card{
+  background:var(--card);
+  padding:20px;
+  border-radius:12px;
+  border:1px solid var(--border);
+}
+
+.card span{
+  font-size:13px;
+  color:var(--muted);
+}
+
+.card strong{
+  font-size:24px;
+}
+
+/* table */
+.table{
+  background:var(--card);
+  border-radius:12px;
+  overflow:hidden;
+  border:1px solid var(--border);
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+}
+
+th,td{
+  padding:14px;
+  text-align:left;
+  font-size:14px;
+}
+
+th{
+  color:var(--muted);
+  border-bottom:1px solid var(--border);
+}
+
+tr:not(:last-child) td{
+  border-bottom:1px solid var(--border);
+}
+
+.status{
+  padding:4px 10px;
+  border-radius:999px;
+  font-size:12px;
+}
+
+.ok{background:#064E3B;color:#6EE7B7;}
+.warn{background:#4C1D95;color:#C4B5FD;}
+</style>
+</head>
+
+<body>
+
+<aside class="sidebar">
+  <h1>Nexus</h1>
+  <nav class="nav">
+    <a class="active">Dashboard</a>
+    <a>Envíos</a>
+    <a>Rutas</a>
+    <a>Clientes</a>
+    <a>Reportes</a>
+  </nav>
+</aside>
+
+<main class="main">
+
+  <div class="header">
+    <h2>Dashboard</h2>
+    <span>Logística en tiempo real</span>
+  </div>
+
+  <section class="cards">
+    <div class="card">
+      <span>Envíos activos</span><br>
+      <strong>128</strong>
+    </div>
+    <div class="card">
+      <span>Entregados hoy</span><br>
+      <strong>76</strong>
+    </div>
+    <div class="card">
+      <span>Retrasos</span><br>
+      <strong>4</strong>
+    </div>
+    <div class="card">
+      <span>Flota activa</span><br>
+      <strong>32</strong>
+    </div>
+  </section>
+
+  <section class="table">
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Cliente</th>
+          <th>Destino</th>
+          <th>Estado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>#NX-1023</td>
+          <td>Mercado Norte</td>
+          <td>Córdoba</td>
+          <td><span class="status ok">En ruta</span></td>
+        </tr>
+        <tr>
+          <td>#NX-1024</td>
+          <td>LogiSur</td>
+          <td>Rosario</td>
+          <td><span class="status warn">Demorado</span></td>
+        </tr>
+        <tr>
+          <td>#NX-1025</td>
+          <td>Almacén Delta</td>
+          <td>Mendoza</td>
+          <td><span class="status ok">En ruta</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+</main>
+
+</body>
+</html>

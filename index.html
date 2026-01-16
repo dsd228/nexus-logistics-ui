@@ -7,52 +7,56 @@
 
 <style>
 :root{
-  --bg:#0F172A;
-  --panel:#111827;
-  --card:#1F2933;
-  --primary:#3B82F6;
-  --accent:#22D3EE;
+  --bg:#0B1220;
+  --panel:#0F172A;
+  --card:#111C2E;
+  --border:#1E293B;
+  --primary:#2563EB;
+  --success:#22C55E;
+  --warning:#A855F7;
   --text:#E5E7EB;
   --muted:#9CA3AF;
-  --border:#273244;
 }
 
-*{
-  box-sizing:border-box;
-  font-family: Inter, system-ui, -apple-system, sans-serif;
-}
+*{box-sizing:border-box;margin:0;padding:0;font-family:Inter,system-ui}
 
 body{
-  margin:0;
   background:var(--bg);
   color:var(--text);
+}
+
+.app{
   display:flex;
+  min-height:100vh;
 }
 
 /* sidebar */
 .sidebar{
   width:240px;
   background:var(--panel);
-  padding:24px;
   border-right:1px solid var(--border);
+  padding:24px;
 }
 
-.sidebar h1{
+.logo{
   font-size:20px;
+  font-weight:600;
   margin-bottom:32px;
 }
 
-.nav a{
-  display:block;
+.nav button{
+  width:100%;
+  background:none;
+  border:none;
+  color:var(--muted);
+  text-align:left;
   padding:12px;
   border-radius:8px;
-  color:var(--muted);
-  text-decoration:none;
-  margin-bottom:8px;
+  cursor:pointer;
+  margin-bottom:6px;
 }
 
-.nav a.active,
-.nav a:hover{
+.nav button.active{
   background:var(--card);
   color:var(--text);
 }
@@ -63,17 +67,14 @@ body{
   padding:32px;
 }
 
-/* header */
 .header{
   display:flex;
   justify-content:space-between;
-  align-items:center;
-  margin-bottom:32px;
+  margin-bottom:24px;
 }
 
-.header h2{
-  margin:0;
-}
+.view{display:none}
+.view.active{display:block}
 
 /* cards */
 .cards{
@@ -85,132 +86,161 @@ body{
 
 .card{
   background:var(--card);
-  padding:20px;
-  border-radius:12px;
   border:1px solid var(--border);
+  border-radius:12px;
+  padding:20px;
 }
 
-.card span{
-  font-size:13px;
-  color:var(--muted);
-}
-
-.card strong{
-  font-size:24px;
-}
+.card span{color:var(--muted);font-size:13px}
+.card strong{font-size:26px}
 
 /* table */
 .table{
   background:var(--card);
+  border:1px solid var(--border);
   border-radius:12px;
   overflow:hidden;
-  border:1px solid var(--border);
 }
 
-table{
-  width:100%;
-  border-collapse:collapse;
-}
+table{width:100%;border-collapse:collapse}
+th,td{padding:14px;font-size:14px}
+th{color:var(--muted);text-align:left;border-bottom:1px solid var(--border)}
+tr:not(:last-child) td{border-bottom:1px solid var(--border)}
 
-th,td{
-  padding:14px;
-  text-align:left;
-  font-size:14px;
-}
-
-th{
-  color:var(--muted);
-  border-bottom:1px solid var(--border);
-}
-
-tr:not(:last-child) td{
-  border-bottom:1px solid var(--border);
-}
-
-.status{
+.badge{
   padding:4px 10px;
   border-radius:999px;
   font-size:12px;
 }
+.ok{background:#064E3B;color:#6EE7B7}
+.warn{background:#4C1D95;color:#C4B5FD}
 
-.ok{background:#064E3B;color:#6EE7B7;}
-.warn{background:#4C1D95;color:#C4B5FD;}
+/* forms */
+input,select{
+  width:100%;
+  padding:10px;
+  border-radius:8px;
+  border:1px solid var(--border);
+  background:var(--panel);
+  color:var(--text);
+}
+
+button.primary{
+  background:var(--primary);
+  border:none;
+  color:#fff;
+  padding:10px 16px;
+  border-radius:8px;
+  cursor:pointer;
+}
 </style>
 </head>
 
 <body>
+<div class="app">
 
 <aside class="sidebar">
-  <h1>Nexus</h1>
-  <nav class="nav">
-    <a class="active">Dashboard</a>
-    <a>Envíos</a>
-    <a>Rutas</a>
-    <a>Clientes</a>
-    <a>Reportes</a>
-  </nav>
+  <div class="logo">Nexus</div>
+  <div class="nav">
+    <button class="active" onclick="go('dashboard',this)">Dashboard</button>
+    <button onclick="go('status',this)">Status</button>
+    <button onclick="go('dispatch',this)">Dispatch</button>
+    <button onclick="go('drivers',this)">Drivers</button>
+  </div>
 </aside>
 
 <main class="main">
 
+<!-- DASHBOARD -->
+<section id="dashboard" class="view active">
   <div class="header">
     <h2>Dashboard</h2>
     <span>Logística en tiempo real</span>
   </div>
 
-  <section class="cards">
-    <div class="card">
-      <span>Envíos activos</span><br>
-      <strong>128</strong>
-    </div>
-    <div class="card">
-      <span>Entregados hoy</span><br>
-      <strong>76</strong>
-    </div>
-    <div class="card">
-      <span>Retrasos</span><br>
-      <strong>4</strong>
-    </div>
-    <div class="card">
-      <span>Flota activa</span><br>
-      <strong>32</strong>
-    </div>
-  </section>
+  <div class="cards">
+    <div class="card"><span>Envíos activos</span><br><strong id="kpiActive">3</strong></div>
+    <div class="card"><span>Entregados</span><br><strong>12</strong></div>
+    <div class="card"><span>Demorados</span><br><strong>1</strong></div>
+    <div class="card"><span>Drivers</span><br><strong>4</strong></div>
+  </div>
+</section>
 
-  <section class="table">
+<!-- STATUS -->
+<section id="status" class="view">
+  <h2>Status de envíos</h2><br>
+  <div class="table">
     <table>
       <thead>
-        <tr>
-          <th>ID</th>
-          <th>Cliente</th>
-          <th>Destino</th>
-          <th>Estado</th>
-        </tr>
+        <tr><th>ID</th><th>Destino</th><th>Estado</th></tr>
       </thead>
-      <tbody>
-        <tr>
-          <td>#NX-1023</td>
-          <td>Mercado Norte</td>
-          <td>Córdoba</td>
-          <td><span class="status ok">En ruta</span></td>
-        </tr>
-        <tr>
-          <td>#NX-1024</td>
-          <td>LogiSur</td>
-          <td>Rosario</td>
-          <td><span class="status warn">Demorado</span></td>
-        </tr>
-        <tr>
-          <td>#NX-1025</td>
-          <td>Almacén Delta</td>
-          <td>Mendoza</td>
-          <td><span class="status ok">En ruta</span></td>
-        </tr>
-      </tbody>
+      <tbody id="statusTable"></tbody>
     </table>
-  </section>
+  </div>
+</section>
+
+<!-- DISPATCH -->
+<section id="dispatch" class="view">
+  <h2>Dispatch</h2><br>
+  <div class="card">
+    <label>Destino</label><br><br>
+    <input id="destino" placeholder="Ciudad"><br><br>
+    <button class="primary" onclick="crearEnvio()">Crear envío</button>
+  </div>
+</section>
+
+<!-- DRIVERS -->
+<section id="drivers" class="view">
+  <h2>Drivers</h2><br>
+  <div class="card">
+    <strong>Juan Pérez</strong><br>
+    <span>Activo</span><br><br>
+    <button class="primary">Ver perfil</button>
+  </div>
+</section>
 
 </main>
+</div>
+
+<script>
+let envios=[
+  {id:'NX-01',destino:'Córdoba',estado:'En ruta'},
+  {id:'NX-02',destino:'Rosario',estado:'En ruta'},
+  {id:'NX-03',destino:'Mendoza',estado:'Demorado'}
+];
+
+function renderStatus(){
+  const t=document.getElementById('statusTable');
+  t.innerHTML='';
+  envios.forEach(e=>{
+    t.innerHTML+=`
+      <tr>
+        <td>${e.id}</td>
+        <td>${e.destino}</td>
+        <td><span class="badge ${e.estado==='Demorado'?'warn':'ok'}">${e.estado}</span></td>
+      </tr>`;
+  });
+  document.getElementById('kpiActive').innerText=envios.length;
+}
+
+function crearEnvio(){
+  const d=document.getElementById('destino').value;
+  if(!d)return;
+  envios.push({id:'NX-'+(envios.length+1),destino:d,estado:'En ruta'});
+  document.getElementById('destino').value='';
+  renderStatus();
+  go('status');
+}
+
+function go(id,btn){
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('active'));
+  if(btn)btn.classList.add('active');
+}
+
+renderStatus();
+</script>
 
 </body>
 </html>

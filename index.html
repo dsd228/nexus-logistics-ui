@@ -7,18 +7,23 @@
 
 <style>
 :root{
-  --bg:#0B1220;
-  --panel:#0F172A;
-  --card:#111C2E;
-  --border:#1E293B;
-  --primary:#2563EB;
-  --success:#22C55E;
-  --warning:#A855F7;
-  --text:#E5E7EB;
-  --muted:#9CA3AF;
+  --bg:#0A0F1C;
+  --panel:#0E1627;
+  --surface:#121C31;
+  --soft:#16213A;
+  --primary:#2F6BFF;
+  --success:#2DD4BF;
+  --warning:#C084FC;
+  --text:#E6EAF2;
+  --muted:#9AA4BF;
 }
 
-*{box-sizing:border-box;margin:0;padding:0;font-family:Inter,system-ui}
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: Inter, system-ui, -apple-system, sans-serif;
+}
 
 body{
   background:var(--bg);
@@ -30,18 +35,17 @@ body{
   min-height:100vh;
 }
 
-/* sidebar */
+/* Sidebar */
 .sidebar{
-  width:240px;
-  background:var(--panel);
-  border-right:1px solid var(--border);
-  padding:24px;
+  width:260px;
+  background:linear-gradient(180deg,#0E1627,#0A0F1C);
+  padding:28px 24px;
 }
 
 .logo{
-  font-size:20px;
+  font-size:22px;
   font-weight:600;
-  margin-bottom:32px;
+  margin-bottom:40px;
 }
 
 .nav button{
@@ -49,88 +53,139 @@ body{
   background:none;
   border:none;
   color:var(--muted);
+  padding:14px 16px;
+  border-radius:14px;
   text-align:left;
-  padding:12px;
-  border-radius:8px;
   cursor:pointer;
-  margin-bottom:6px;
+  margin-bottom:10px;
 }
 
 .nav button.active{
-  background:var(--card);
+  background:var(--surface);
   color:var(--text);
+  box-shadow:
+    inset 2px 2px 6px rgba(0,0,0,.6),
+    inset -2px -2px 6px rgba(255,255,255,.04);
 }
 
-/* main */
+/* Main */
 .main{
   flex:1;
-  padding:32px;
+  padding:36px 40px;
 }
 
 .header{
   display:flex;
   justify-content:space-between;
-  margin-bottom:24px;
+  align-items:center;
+  margin-bottom:36px;
+}
+
+.header h2{
+  font-size:24px;
+  font-weight:600;
+}
+
+.header span{
+  color:var(--muted);
 }
 
 .view{display:none}
 .view.active{display:block}
 
-/* cards */
+/* Cards */
 .cards{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-  gap:16px;
-  margin-bottom:32px;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
+  margin-bottom:40px;
 }
 
 .card{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:12px;
-  padding:20px;
+  background:var(--surface);
+  border-radius:20px;
+  padding:24px;
+  box-shadow:
+    6px 6px 16px rgba(0,0,0,.6),
+    -6px -6px 16px rgba(255,255,255,.03);
 }
 
-.card span{color:var(--muted);font-size:13px}
-.card strong{font-size:26px}
+.card span{
+  color:var(--muted);
+  font-size:13px;
+}
 
-/* table */
+.card strong{
+  display:block;
+  margin-top:6px;
+  font-size:28px;
+}
+
+/* Table */
 .table{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:12px;
-  overflow:hidden;
+  background:var(--surface);
+  border-radius:20px;
+  padding:8px;
+  box-shadow:
+    6px 6px 16px rgba(0,0,0,.6),
+    -6px -6px 16px rgba(255,255,255,.03);
 }
 
-table{width:100%;border-collapse:collapse}
-th,td{padding:14px;font-size:14px}
-th{color:var(--muted);text-align:left;border-bottom:1px solid var(--border)}
-tr:not(:last-child) td{border-bottom:1px solid var(--border)}
+table{
+  width:100%;
+  border-collapse:collapse;
+}
+
+th,td{
+  padding:16px;
+  font-size:14px;
+}
+
+th{
+  color:var(--muted);
+  text-align:left;
+}
+
+tr:not(:last-child) td{
+  border-bottom:1px solid rgba(255,255,255,.05);
+}
 
 .badge{
-  padding:4px 10px;
+  padding:6px 14px;
   border-radius:999px;
   font-size:12px;
 }
-.ok{background:#064E3B;color:#6EE7B7}
-.warn{background:#4C1D95;color:#C4B5FD}
 
-/* forms */
-input,select{
+.ok{
+  background:rgba(45,212,191,.15);
+  color:var(--success);
+}
+
+.warn{
+  background:rgba(192,132,252,.15);
+  color:var(--warning);
+}
+
+/* Forms */
+input{
   width:100%;
-  padding:10px;
-  border-radius:8px;
-  border:1px solid var(--border);
-  background:var(--panel);
+  background:var(--soft);
+  border:none;
+  border-radius:14px;
+  padding:14px;
   color:var(--text);
+  box-shadow:
+    inset 3px 3px 8px rgba(0,0,0,.6),
+    inset -3px -3px 8px rgba(255,255,255,.04);
 }
 
 button.primary{
+  margin-top:16px;
   background:var(--primary);
   border:none;
   color:#fff;
-  padding:10px 16px;
-  border-radius:8px;
+  padding:14px 22px;
+  border-radius:14px;
   cursor:pointer;
 }
 </style>
@@ -151,51 +206,45 @@ button.primary{
 
 <main class="main">
 
-<!-- DASHBOARD -->
 <section id="dashboard" class="view active">
   <div class="header">
     <h2>Dashboard</h2>
-    <span>Logística en tiempo real</span>
+    <span>Control logístico</span>
   </div>
 
   <div class="cards">
-    <div class="card"><span>Envíos activos</span><br><strong id="kpiActive">3</strong></div>
-    <div class="card"><span>Entregados</span><br><strong>12</strong></div>
-    <div class="card"><span>Demorados</span><br><strong>1</strong></div>
-    <div class="card"><span>Drivers</span><br><strong>4</strong></div>
+    <div class="card"><span>Envíos activos</span><strong id="kpi">3</strong></div>
+    <div class="card"><span>Entregados</span><strong>12</strong></div>
+    <div class="card"><span>Demorados</span><strong>1</strong></div>
+    <div class="card"><span>Drivers</span><strong>4</strong></div>
   </div>
 </section>
 
-<!-- STATUS -->
 <section id="status" class="view">
-  <h2>Status de envíos</h2><br>
+  <h2>Status</h2><br>
   <div class="table">
     <table>
       <thead>
         <tr><th>ID</th><th>Destino</th><th>Estado</th></tr>
       </thead>
-      <tbody id="statusTable"></tbody>
+      <tbody id="rows"></tbody>
     </table>
   </div>
 </section>
 
-<!-- DISPATCH -->
 <section id="dispatch" class="view">
   <h2>Dispatch</h2><br>
   <div class="card">
-    <label>Destino</label><br><br>
-    <input id="destino" placeholder="Ciudad"><br><br>
-    <button class="primary" onclick="crearEnvio()">Crear envío</button>
+    <input id="destino" placeholder="Destino del envío">
+    <button class="primary" onclick="crear()">Crear envío</button>
   </div>
 </section>
 
-<!-- DRIVERS -->
 <section id="drivers" class="view">
   <h2>Drivers</h2><br>
   <div class="card">
     <strong>Juan Pérez</strong><br>
-    <span>Activo</span><br><br>
-    <button class="primary">Ver perfil</button>
+    <span style="color:var(--muted)">Activo</span>
   </div>
 </section>
 
@@ -209,8 +258,8 @@ let envios=[
   {id:'NX-03',destino:'Mendoza',estado:'Demorado'}
 ];
 
-function renderStatus(){
-  const t=document.getElementById('statusTable');
+function render(){
+  const t=document.getElementById('rows');
   t.innerHTML='';
   envios.forEach(e=>{
     t.innerHTML+=`
@@ -220,15 +269,15 @@ function renderStatus(){
         <td><span class="badge ${e.estado==='Demorado'?'warn':'ok'}">${e.estado}</span></td>
       </tr>`;
   });
-  document.getElementById('kpiActive').innerText=envios.length;
+  document.getElementById('kpi').innerText=envios.length;
 }
 
-function crearEnvio(){
+function crear(){
   const d=document.getElementById('destino').value;
   if(!d)return;
   envios.push({id:'NX-'+(envios.length+1),destino:d,estado:'En ruta'});
   document.getElementById('destino').value='';
-  renderStatus();
+  render();
   go('status');
 }
 
@@ -239,7 +288,7 @@ function go(id,btn){
   if(btn)btn.classList.add('active');
 }
 
-renderStatus();
+render();
 </script>
 
 </body>

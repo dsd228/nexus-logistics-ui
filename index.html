@@ -2,257 +2,235 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Nexus Logistics – Dashboard</title>
+<title>Nexus Logistics – Demo</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Leaflet -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 
 <style>
 :root{
-  --nav:#132F4C;
-  --primary:#0B5FFF;
-  --text:#0F172A;
-  --muted:#6B7280;
-  --bg:#F8FAFC;
-  --card:#FFFFFF;
-  --border:#E5E7EB;
+  --navy:#132e4a;
+  --navy-dark:#0f253c;
+  --white:#ffffff;
+  --bg:#f5f7fa;
+  --card:#ffffff;
+  --blue:#0a74ff;
+  --green:#2ecc71;
+  --red:#ff4d4f;
+  --shadow:0 6px 14px rgba(0,0,0,.12);
 }
 
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-  font-family: Inter, system-ui, -apple-system, sans-serif;
-}
+*{box-sizing:border-box;font-family:Inter,system-ui,sans-serif}
+body{margin:0;background:var(--bg);color:#132e4a}
 
-body{
-  background:var(--bg);
-  color:var(--text);
-}
-
-/* Topbar */
-.topbar{
-  height:72px;
-  background:var(--nav);
+/* TOP NAV */
+nav{
+  height:70px;
+  background:var(--navy);
   color:#fff;
   display:flex;
   align-items:center;
   justify-content:space-between;
-  padding:0 40px;
+  padding:0 32px;
+}
+nav .logo{font-weight:700;font-size:20px}
+nav .menu span{
+  margin:0 18px;
+  cursor:pointer;
+  opacity:.75;
+}
+nav .menu span.active{
+  opacity:1;
+  border-bottom:3px solid #fff;
+  padding-bottom:8px;
 }
 
-.logo{
-  font-weight:600;
-  letter-spacing:.5px;
-}
-
-.logo span{
-  display:block;
-  font-size:12px;
-  opacity:.7;
-}
-
-.menu{
+/* LAYOUT */
+.main{
   display:flex;
-  gap:48px;
+  height:calc(100vh - 70px);
 }
 
-.menu a{
-  color:#cbd5e1;
-  text-decoration:none;
-  padding-bottom:6px;
+/* SIDEBAR */
+.sidebar{
+  width:320px;
+  background:var(--navy-dark);
+  padding:20px;
+  overflow:auto;
 }
-
-.menu a.active{
+.sidebar h3{
   color:#fff;
-  border-bottom:2px solid #fff;
+  margin-bottom:16px;
+  font-weight:500;
 }
+.shipment{
+  background:#fff;
+  border-radius:10px;
+  padding:14px;
+  margin-bottom:14px;
+  cursor:pointer;
+  box-shadow:var(--shadow);
+}
+.shipment:hover{outline:2px solid var(--blue)}
+.shipment small{opacity:.7}
 
-.icons{
+/* CONTENT */
+.content{
+  flex:1;
+  padding:24px;
   display:flex;
-  gap:20px;
-  font-size:18px;
+  flex-direction:column;
+  gap:24px;
 }
 
-/* Layout */
-.container{
-  padding:40px;
-}
-
-/* KPI cards */
-.kpis{
+/* DASHBOARD CARDS */
+.cards{
   display:grid;
   grid-template-columns:repeat(4,1fr);
-  gap:24px;
-  margin-bottom:32px;
+  gap:20px;
 }
-
-.kpi{
-  background:var(--card);
-  border-radius:12px;
-  padding:24px;
-  box-shadow:0 4px 12px rgba(0,0,0,.06);
-}
-
-.kpi h4{
-  font-weight:500;
-  color:var(--muted);
-  margin-bottom:16px;
-}
-
-.kpi strong{
-  font-size:32px;
-}
-
-/* Grid bottom */
-.grid{
-  display:grid;
-  grid-template-columns:2fr 1fr;
-  gap:24px;
-}
-
-/* Activity */
 .card{
   background:var(--card);
-  border-radius:12px;
-  padding:24px;
-  box-shadow:0 4px 12px rgba(0,0,0,.06);
+  border-radius:14px;
+  padding:22px;
+  box-shadow:var(--shadow);
+  cursor:pointer;
 }
+.card h2{margin:12px 0 0;font-size:36px}
 
-.card h3{
-  margin-bottom:20px;
-}
-
-.activity{
+/* MAP */
+.map-wrap{
+  flex:1;
   display:flex;
-  flex-direction:column;
-  gap:16px;
+  gap:24px;
+}
+#map{
+  flex:1;
+  border-radius:16px;
+  box-shadow:var(--shadow);
 }
 
-.item{
-  display:flex;
-  justify-content:space-between;
+/* DRIVER POPUP */
+.driver-popup{
   font-size:14px;
-  padding-bottom:12px;
-  border-bottom:1px solid var(--border);
 }
 
-.dot{
-  width:12px;
-  height:12px;
-  border-radius:50%;
-}
-
-.green{background:#22C55E}
-.red{background:#EF4444}
-
-/* Donut */
-.donut{
-  width:180px;
-  height:180px;
-  border-radius:50%;
-  background:
-    conic-gradient(
-      var(--primary) 0% 25%,
-      var(--nav) 25% 100%
-    );
-  margin:20px auto;
-}
-
-.legend{
-  display:flex;
-  flex-direction:column;
-  gap:16px;
-  font-size:16px;
-}
-
-.legend span{
-  display:flex;
-  align-items:center;
-  gap:12px;
-}
-
-.box{
-  width:18px;
-  height:18px;
-  border-radius:4px;
+/* TOAST */
+.toast{
+  position:absolute;
+  bottom:24px;
+  left:50%;
+  transform:translateX(-50%);
+  background:var(--green);
+  color:#fff;
+  padding:12px 22px;
+  border-radius:30px;
+  display:none;
 }
 </style>
 </head>
 
 <body>
 
-<header class="topbar">
-  <div class="logo">
-    NEXUS
-    <span>LOGISTICS</span>
+<nav>
+  <div class="logo">NEXUS LOGISTICS</div>
+  <div class="menu">
+    <span class="active" onclick="showDashboard()">Dashboard</span>
+    <span onclick="showDispatch()">Dispatch</span>
+    <span>Status</span>
+    <span>Fleet</span>
+    <span>History/Reports</span>
   </div>
+</nav>
 
-  <nav class="menu">
-    <a class="active">Dashboard</a>
-    <a>Dispatch</a>
-    <a>Fleet</a>
-    <a>History/Reports</a>
-  </nav>
+<div class="main">
 
-  <div class="icons">
-    🔔 👤
-  </div>
-</header>
+  <!-- SIDEBAR -->
+  <div class="sidebar" id="sidebar">
+    <h3>Unassigned Queue</h3>
 
-<main class="container">
+    <div class="shipment" onclick="assignShipment('XP-88210')">
+      <b>ID:</b> XP-88210<br>
+      <small>Client: Samsung<br>Dest: Palermo</small>
+    </div>
 
-<section class="kpis">
-  <div class="kpi">
-    <h4>Total Shipments</h4>
-    <strong>1,240 (+5%)</strong>
-  </div>
-  <div class="kpi">
-    <h4>Pending Assignment</h4>
-    <strong>12</strong>
-  </div>
-  <div class="kpi">
-    <h4>Active Drivers</h4>
-    <strong>45</strong>
-  </div>
-  <div class="kpi">
-    <h4>On-Time Rate</h4>
-    <strong>98%</strong>
-  </div>
-</section>
+    <div class="shipment" onclick="assignShipment('XP-9022')">
+      <b>ID:</b> XP-9022<br>
+      <small>Client: LG<br>Dest: Centro</small>
+    </div>
 
-<section class="grid">
-
-  <div class="card">
-    <h3>Recent Tracking Activity</h3>
-    <div class="activity">
-      <div class="item">
-        <span><span class="dot green"></span> SH-1055 Delivered to warehouse</span>
-        <span style="color:#22C55E">Delivered</span>
-      </div>
-      <div class="item">
-        <span><span class="dot red"></span> SH-1055 Warehouse</span>
-        <span style="color:#EF4444">Delayed</span>
-      </div>
-      <div class="item">
-        <span><span class="dot green"></span> SH-1020 Delivered - Driver Luis P.</span>
-      </div>
-      <div class="item" style="border:none">
-        <span><span class="dot green"></span> SH-1020 Delayed - Driver Luis P.</span>
-      </div>
+    <div class="shipment" onclick="assignShipment('XP-7751')">
+      <b>ID:</b> XP-7751<br>
+      <small>Client: Apple<br>Dest: Norte</small>
     </div>
   </div>
 
-  <div class="card">
-    <h3>Fleet Status Overview</h3>
-    <div class="donut"></div>
-    <div class="legend">
-      <span><div class="box" style="background:var(--nav)"></div> Busy: 75%</span>
-      <span><div class="box" style="background:var(--primary)"></div> Idle: 25%</span>
+  <!-- CONTENT -->
+  <div class="content" id="content">
+
+    <!-- DASHBOARD -->
+    <div class="cards" id="dashboard">
+      <div class="card"><small>Total Shipments</small><h2>1,240</h2></div>
+      <div class="card"><small>Pending</small><h2>12</h2></div>
+      <div class="card"><small>Drivers</small><h2>45</h2></div>
+      <div class="card"><small>On-Time</small><h2>98%</h2></div>
     </div>
+
+    <!-- MAP -->
+    <div class="map-wrap" id="dispatch" style="display:none">
+      <div id="map"></div>
+    </div>
+
   </div>
+</div>
 
-</section>
+<div class="toast" id="toast">Shipment assigned</div>
 
-</main>
+<!-- Leaflet -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script>
+let map = L.map('map').setView([-31.4167, -64.1833], 13);
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+  attribution:'© OpenStreetMap'
+}).addTo(map);
+
+const drivers = [
+  {name:"Mike R.",lat:-31.42,lng:-64.19},
+  {name:"Sarah L.",lat:-31.41,lng:-64.17},
+  {name:"John D.",lat:-31.40,lng:-64.20}
+];
+
+drivers.forEach(d=>{
+  L.marker([d.lat,d.lng]).addTo(map)
+   .bindPopup(`<div class="driver-popup">
+      <b>${d.name}</b><br>
+      Vehicle: Van #45<br>
+      Status: Available<br><br>
+      <button onclick="assignShipment('${d.name}')">Assign</button>
+   </div>`);
+});
+
+function showDashboard(){
+  document.getElementById("dashboard").style.display="grid";
+  document.getElementById("dispatch").style.display="none";
+}
+
+function showDispatch(){
+  document.getElementById("dashboard").style.display="none";
+  document.getElementById("dispatch").style.display="flex";
+  setTimeout(()=>map.invalidateSize(),200);
+}
+
+function assignShipment(id){
+  const toast=document.getElementById("toast");
+  toast.innerText="Shipment "+id+" assigned successfully";
+  toast.style.display="block";
+  setTimeout(()=>toast.style.display="none",2500);
+}
+</script>
 
 </body>
 </html>
